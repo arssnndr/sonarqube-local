@@ -5,10 +5,10 @@
 Run the local stack:
 
 ```bash
-docker compose -f "sonar-scanner.yml" up -d --build
+docker compose up -d --build
 ```
 
-Open the UI at [http://localhost:9001](http://localhost:9001), then go to your profile, open **My Account**, select **Security**, and generate a new token.
+Open the UI at [http://localhost:9002](http://localhost:9002), then go to your profile, open **My Account**, select **Security**, and generate a new token.
 
 ## 2. Install SonarScanner CLI
 
@@ -45,7 +45,7 @@ $env:PATH = "D:\SALT-Workspace\sonarqube\sonar-scanner-8.0.1.6346-windows-x64\bi
 Edit the SonarScanner config file in `sonar-scanner/conf/sonar-scanner.properties`:
 
 ```properties
-sonar.host.url=http://localhost:9001
+sonar.host.url=http://localhost:9002
 sonar.login=YOUR_TOKEN_HERE
 ```
 
