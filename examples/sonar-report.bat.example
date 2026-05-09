@@ -1,0 +1,37 @@
+@echo off
+REM Quick shortcut to run SonarQube analysis for this project
+REM Usage: sonar-report
+REM
+REM Setup Instructions:
+REM 1. Copy this file to your project root folder
+REM 2. Rename to: sonar-report.bat
+REM 3. Update the project name in line 8 (optional, for display only)
+REM 4. Ensure sonarqube folder exists in parent or grandparent directory
+REM 5. Run: sonar-report (or .\sonar-report.bat)
+
+echo Running SonarQube analysis for YOUR-PROJECT-NAME...
+echo.
+
+REM Find sonarqube folder (check parent and grandparent)
+set "SONARQUBE_DIR="
+if exist "..\sonarqube\run_analysis_in_project.bat" (
+    set "SONARQUBE_DIR=..\sonarqube"
+) else if exist "..\..\sonarqube\run_analysis_in_project.bat" (
+    set "SONARQUBE_DIR=..\..\sonarqube"
+) else (
+    echo Error: Cannot find sonarqube tools directory
+    echo Please ensure sonarqube folder exists in parent or grandparent directory
+    exit /b 1
+)
+
+REM Load .env file if exists
+if exist "%SONARQUBE_DIR%\.env" (
+    echo Loading authentication from .env file...
+    for /f "usebackq tokens=1,* delims==" %%a in ("%SONARQUBE_DIR%\.env") do (
+        if "%%a"=="SONARQUBE_TOKEN" set "SONARQUBE_TOKEN=%%b"
+        if "%%a"=="SONARQUBE_URL" set "SONARQUBE_URL=%%b"
+    )
+)
+
+REM Run analysis
+call %SONARQUBE_DIR%\run_analysis_in_project.bat %CD%
