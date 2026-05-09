@@ -1,1 +1,19 @@
 sonar-scanner-*
+
+# SonarQube export and analysis files
+reports/sonarqube_report_*.json
+reports/ai_analysis_*.md
+
+# Environment variables (contains sensitive tokens)
+.env
+
+# Python
+*.pyc
+__pycache__/
+.pytest_cache/
+
+# IDE
+.vscode/
+
+# Logs
+*.log
