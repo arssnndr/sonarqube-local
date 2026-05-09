@@ -69,11 +69,3 @@ echo Analysis Complete!
 echo ========================================
 echo Report: %REPORT_FILE%
 echo Prompt: %PROMPT_FILE%
-echo.
-echo Next steps:
-echo 1. Open %PROMPT_FILE%
-echo 2. Copy content to your AI assistant
-echo 3. Get comprehensive analysis and recommendations
-echo.
-
-pause
